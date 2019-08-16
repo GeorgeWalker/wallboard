@@ -1,0 +1,37 @@
+<%
+
+require 'socket'
+require 'resolv-replace'
+ip = Socket.ip_address_list.detect{|intf| intf.ipv4? and !intf.ipv4_loopback? and !intf.ipv4_multicast? and !intf.ipv4_private?}
+
+
+%>
+<% content_for :title do %>LCRB Cannabis System Development<% end %>
+<div class="gridster">
+  <ul>
+
+<li data-row="1" data-col="1" data-sizex="5" data-sizey="4">
+  <div data-id="sprintboard" data-view="JiraSprintBoard"></div>
+</li>
+
+<li data-row="1" data-col="6" data-sizex="1" data-sizey="1">
+  <div data-id="clock" data-view="Clock"></div>
+</li>
+
+<li data-row="2" data-col="6" data-sizex="1" data-sizey="1">
+  <div data-id="doughnutchart" data-view ="DoughnutChart" data-left-margin="5" data-top-margin="10"></div>
+</li>
+
+<li data-row="3" data-col="6" data-sizex="1" data-sizey="1">
+      <div data-id="outwarn" data-view="Zabbix" data-title="Zabbix" style="background-color:#96bf48;"></div>
+</li>
+
+<li data-row="4" data-col="6" data-sizex="1" data-sizey="1">
+  <div><p align=right><font color=white><i><%=ip.ip_address%>&nbsp;</i><!-- :<%=request.port%>--></font></p></div>
+</li>
+
+
+	</ul>
+  
+</div>
+

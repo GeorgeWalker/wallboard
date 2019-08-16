@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="column-header">Name</div>
+    <div class="column-header">To Do</div>
+    <div class="column-header">Ready</div>
+    <div class="column-header">In Progress</div>
+    <div class="column-header">Test</div>
+    <div class="column-header">Done</div>    
+</div>
+<div data-foreach-assignee="issues">
+    <div class="row">
+        <div class="column-header" data-bind="assignee.name">  </div>
+        <div class="column-small"> 
+            <div class="cell-row" data-foreach-issue="assignee.issues[0]">
+                <span class="issue-key" data-bind=issue.key></span>
+                <span class="issue-summary" data-bind=issue.summary></span>
+            </div>
+        </div>
+        <div class="column-small">
+            <div class="cell-row" data-foreach-issue="assignee.issues[1]">
+                    <span class="issue-key" data-bind=issue.key></span>
+                    <span class="issue-summary" data-bind=issue.summary></span>
+            </div>
+        </div>
+        <div class="column-small">
+            <div class="cell-row" data-foreach-issue="assignee.issues[2]">
+                <span class="issue-key" data-bind=issue.key></span>
+                <span class="issue-summary" data-bind=issue.summary></span>
+            </div>
+        </div>
+        <div class="column-small">
+            <div class="cell-row" data-foreach-issue="assignee.issues[3]">
+                <span class="issue-key" data-bind=issue.key></span>
+                <span class="issue-summary" data-bind=issue.summary></span>
+            </div>
+        </div>
+        <div class="column-small">
+            <div class="cell-row" data-foreach-issue="assignee.issues[4]">
+                <span class="issue-key" data-bind=issue.key></span>
+                <span class="issue-summary" data-bind=issue.summary></span>
+            </div>
+        </div>
+
+</div>    
+
+</div>
+

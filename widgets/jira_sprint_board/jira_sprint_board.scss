@@ -1,0 +1,87 @@
+$background-color: rgb(39, 44, 43); 
+$days-color:       #fff;
+$board-color:      rgba(255, 255, 255, 0.7);
+$sprint-color:     rgba(255, 255, 255, 0.7);
+$updated-at-color: rgba(0, 0, 0, 0.3);
+
+.widget-jira-sprint-board {
+  background-color: $background-color;
+  vertical-align:top;
+
+  .board {
+    color: $board-color;
+  }
+
+  .row
+  {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 2px;
+  }
+
+  .cell-row
+  { 
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;   
+    border-spacing: 0px;
+  }
+
+  .column
+  {
+    display: table-cell;
+  }
+
+  .column-big
+  {
+    display: table-cell;
+    font-size: 80px;
+    font-weight: bold;
+  }
+
+  .column-medium
+  {
+    display: table-cell;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .column-small
+  {
+    display: table-cell;
+    font-size: 10px;
+    width:15%;
+  }
+
+  
+  .column-header
+  {
+    display: table-cell;
+    font-size: 12px;
+    text-align: left;
+    width:10%;
+    white-space: nowrap;
+  }
+
+  .issue-key
+  {
+    font-size: 10px;
+    color: blue;
+  }
+
+  .issue-summary
+  {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+  }
+
+  .issue-points
+  {
+    font-size: 10px;
+  }
+
+}
