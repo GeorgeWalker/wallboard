@@ -17,7 +17,7 @@ require 'json'
   lav_hgh = 0
   lav_dis = 0
 
-SCHEDULER.every '10s' do
+SCHEDULER.every '30s' do
 
   serv = Zabby.init do
     set :server => ENV['ZABBIX_SERVER']
@@ -30,6 +30,8 @@ SCHEDULER.every '10s' do
   
   pas = JSON.parse(env.to_json)
   
+  swarn = []
+
   pas.each do |res|
     #puts res
     prio = res["priority"]
@@ -40,7 +42,7 @@ SCHEDULER.every '10s' do
     
     #adjust the pref. time 
     # timelapse = Time.now - 1.hours
-    swarn = []
+    
     swarn << description
         
   end
