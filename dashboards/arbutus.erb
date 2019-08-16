@@ -27,7 +27,7 @@ ip = Socket.ip_address_list.detect{|intf| intf.ipv4? and !intf.ipv4_loopback? an
 </li>
 
 <li data-row="4" data-col="6" data-sizex="1" data-sizey="1">
-  <div><p align=right><font color=white><i><%=ip.ip_address%>&nbsp;</i><!-- :<%=request.port%>--></font></p></div>
+  <div><p align=left><font color=white><i><%=ip.ip_address%>&nbsp;</i><!-- :<%=request.port%>--></font></p></div>
 </li>
 
 
