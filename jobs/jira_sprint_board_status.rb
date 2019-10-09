@@ -35,10 +35,7 @@ def get_active_sprint_for_view(view_id)
   http = create_http
   request = create_request("/rest/greenhopper/1.0/sprintquery/" + view_id.to_s)
   response = http.request(request)
-  puts "/rest/greenhopper/1.0/sprintquery/" + view_id.to_s
-  puts response
-  puts "END OF RESPONSE"
-
+  
   sprints = JSON.parse(response.body)["sprints"]
   sprints.each do |sprint|
     if sprint["state"] == "ACTIVE"

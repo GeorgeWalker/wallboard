@@ -43,9 +43,10 @@ class Dashing.DoughnutChart extends Dashing.Widget
 
   onData: (data) ->
     # Load new values and update chart
+    if (data.)
     if @myChart
       if data.labels then @myChart.data.labels = data.labels
       if data.datasets then @myChart.data.datasets = data.datasets
-      if data.options then @myChart.options = $.extend(data.options, @myChart.options)
+      if data.options then @myChart.options = data.options
 
       @myChart.update()
