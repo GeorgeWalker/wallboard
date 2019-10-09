@@ -47,6 +47,13 @@ class Dashing.DoughnutChart extends Dashing.Widget
     if @myChart
       if data.labels then @myChart.data.labels = data.labels
       if data.datasets then @myChart.data.datasets = data.datasets
-      if data.options then @myChart.options = data.options
+      if data.options then @myChart.options = $.extend({
+        responsive: true
+        maintainAspectRatio: true
+        legend: {
+          position: 'bottom',
+          display: true
+        }
+      }, data.options)
 
       @myChart.update()
