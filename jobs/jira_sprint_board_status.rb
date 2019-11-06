@@ -35,13 +35,15 @@ def get_active_sprint_for_view(view_id)
   http = create_http
   request = create_request("/rest/greenhopper/1.0/sprintquery/" + view_id.to_s)
   response = http.request(request)
-  
+  result = nil
   sprints = JSON.parse(response.body)["sprints"]
   sprints.each do |sprint|
     if sprint["state"] == "ACTIVE"
-      return sprint
+      # we want the last active, so keep looping in case if multiple sprints are active.
+      result = sprint
     end
   end
+  return result
 end
 
 def get_sprint_details(sprint_id)
@@ -59,10 +61,11 @@ def get_issues_per_status(view_id, sprint_id, issue_count_array, issue_sp_count_
 
   begin
     response = get_response("/rest/agile/1.0/board/#{view_id}/sprint/#{sprint_id}/issue?startAt=#{current_start_at}")
+        
+    
     page_result = JSON.parse(response.body)
     issue_array = page_result['issues']
-
-	
+    
     issue_array.each do |issue|
       accumulate_issue_information(issue, issue_count_array, issue_sp_count_array, issueHash)
     end
