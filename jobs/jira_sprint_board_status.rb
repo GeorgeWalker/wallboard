@@ -32,17 +32,20 @@ end
 
 # gets the active sprint for the view
 def get_active_sprint_for_view(view_id)
+  puts "Getting active sprint for view."
   http = create_http
   request = create_request("/rest/greenhopper/1.0/sprintquery/" + view_id.to_s)
   response = http.request(request)
   result = nil
   sprints = JSON.parse(response.body)["sprints"]
   sprints.each do |sprint|
-    if sprint["state"] == "ACTIVE"
-      # we want the last active, so keep looping in case if multiple sprints are active.
+    if sprint["state"] == "ACTIVE"      
       result = sprint
+      break result
     end
   end
+  puts "Result is"
+  puts result
   return result
 end
 
@@ -178,7 +181,11 @@ SCHEDULER.every '15m', :first_in => 0 do
     sprint_json = get_active_sprint_for_view(VIEW_ID)
     if (sprint_json)
       get_issues_per_status(VIEW_ID, sprint_json["id"], issue_count_array, issue_sp_count_array, issueHash)
+    else
+      puts "SPRINT IS EMPTY"
     end
+  else
+    puts "VIEW IS EMPTY."
   end
 
   # convert the issueHash into issue data.
