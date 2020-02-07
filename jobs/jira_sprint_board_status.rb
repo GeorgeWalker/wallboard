@@ -124,8 +124,9 @@ def accumulate_issue_information(issue, issue_count_array, issue_sp_count_array,
   issueSummary["summary"] = issue["fields"]["summary"]
   issueSummary["flagged"] = issue["fields"]["flagged"]
 
-  issueHash[assignee][issueTypeIndex].push(issueSummary) 
-
+  if !(issueHash[assignee][issueTypeIndex].length < 10)
+    issueHash[assignee][issueTypeIndex].push(issueSummary) 
+  end
   # totals
   issue_count_array[5] = issue_count_array[5] + 1
   if !issue['fields'][STORY_POINTS_CUSTOMFIELD_CODE].nil?
